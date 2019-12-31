@@ -12,6 +12,7 @@
 	<div class="container">
 		<div id="timer-box">
 			<label id="time"></label>
+			<!-- 
 			<div id="input-box">
 				<label>Hours:</label>
 				<input id="input-hrs" type="number" min="0" max="23">
@@ -20,27 +21,44 @@
 				<label>Seconds:</label>
 				<input id="input-secs" type="number" min="0" max="59">
 			</div>
+			 -->
 		</div>
 	</div>
 	<script>
-		const TIME_LIMIT = 300;
+	/*
+		TODO: Set the countdown timer from the UI and add a start button
+		TODO: Alert the user when the countdown finishes.
+	*/
+		
+		
+		
+		const TIME_LIMIT_SECONDS = parseInt((new Date("1/1/2020") - new Date()) / 1000);
 
-		var counter = TIME_LIMIT - 1;
+		var counter = TIME_LIMIT_SECONDS - 1;
 
 		var timeLabel = document.getElementById("time");
 		
 		timeLabel.innerText = formatMilliseconds(counter * 1000);
-		/*
-		timer = setInterval(function() {
+		
+		timer = setInterval(elapsed ,1000);
+		
+		function future(){
+			timeLabel.style.color = 'red';
+			timeLabel.style.fontSize = '55px';
+			timeLabel.innerText = 'HAPPY NEW YEAR';
+			alert("HAPPY NEW YEAR!!!!");
+		}
+		
+		function elapsed(){
 			counter--;
 			if (counter == -1) {
 				clearInterval(timer);
+				future();
 			} else {
 				timeLabel.innerText = formatMilliseconds(counter * 1000);
 			}
-		}, 1000);
-		*/
-
+		}
+		
 		function formatMilliseconds(milli) {
 			var seconds = parseInt(milli / 1000);
 			var minutes = parseInt(seconds / 60);
