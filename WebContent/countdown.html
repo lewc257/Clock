@@ -1,25 +1,59 @@
 <!DOCTYPE HTML>
 
 <html>
-	<head>
-		<title>Countdown Timer</title>
-		<link rel="stylesheet" type="text/css" href="countdown.css"></link>
-	</head>
-	<body>
-		<header>
-			<h1>Countdown</h1>
-		</header>
-		<div class="container">
-			<div id="timer">
-				<label id="h1">0</label>
-				<label id="h2">0</label>
-				<label>:</label>
-				<label id="m1">0</label>
-				<label id="m2">0</label>
-				<label>:</label>
-				<label id="s1">0</label>
-				<label id="s2">0</label>
+<head>
+<title>Countdown Timer</title>
+<link rel="stylesheet" type="text/css" href="countdown.css"></link>
+</head>
+<body>
+	<header>
+		<h1>Countdown</h1>
+	</header>
+	<div class="container">
+		<div id="timer-box">
+			<label id="time"></label>
+			<div id="input-box">
+				<label>Hours:</label>
+				<input id="input-hrs" type="number" min="0" max="23">
+				<label>Minutes:</label>
+				<input id="input-mins" type="number" min="0" max="59">
+				<label>Seconds:</label>
+				<input id="input-secs" type="number" min="0" max="59">
 			</div>
 		</div>
-	</body>
+	</div>
+	<script>
+		const TIME_LIMIT = 300;
+
+		var counter = TIME_LIMIT - 1;
+
+		var timeLabel = document.getElementById("time");
+		
+		timeLabel.innerText = formatMilliseconds(counter * 1000);
+		/*
+		timer = setInterval(function() {
+			counter--;
+			if (counter == -1) {
+				clearInterval(timer);
+			} else {
+				timeLabel.innerText = formatMilliseconds(counter * 1000);
+			}
+		}, 1000);
+		*/
+
+		function formatMilliseconds(milli) {
+			var seconds = parseInt(milli / 1000);
+			var minutes = parseInt(seconds / 60);
+			var hours = parseInt(minutes / 60);
+			var hrs = formatNum(hours % 24);
+			var mins = formatNum(minutes % 60);
+			var secs = formatNum(seconds % 60);
+			return `${hrs}:${mins}:${secs}`;
+		}
+
+		function formatNum(n) {
+			return n < 10 ? "0" + n : n;
+		}
+	</script>
+</body>
 </html>
