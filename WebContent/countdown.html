@@ -45,16 +45,19 @@
 		function future(){
 			timeLabel.style.color = 'red';
 			timeLabel.style.fontSize = '55px';
-			timeLabel.innerText = 'HAPPY NEW YEAR';
+			timeLabel.innerText = 'HAPPY NEW YEAR!!';
 			alert("HAPPY NEW YEAR!!!!");
 		}
 		
 		function elapsed(){
 			counter--;
-			if (counter == -1) {
+			if (counter < 0) {
 				clearInterval(timer);
 				future();
 			} else {
+				if (counter < 10){
+					timeLabel.style.color = 'red';
+				}
 				timeLabel.innerText = formatMilliseconds(counter * 1000);
 			}
 		}
