@@ -13,12 +13,10 @@
 		<div id="timer-box">
 			<label id="time"></label>
 			<div id="input-box">
-				<label>Hours:</label>
-				<input id="input-hrs" type="number" min="0" max="23">
-				<label>Minutes:</label>
-				<input id="input-mins" type="number" min="0" max="59">
-				<label>Seconds:</label>
-				<input id="input-secs" type="number" min="0" max="59">
+				<label>Hours:</label> <input id="input-hrs" type="number" min="0"
+					max="23"> <label>Minutes:</label> <input id="input-mins"
+					type="number" min="0" max="59"> <label>Seconds:</label> <input
+					id="input-secs" type="number" min="0" max="59">
 			</div>
 			<div id="button-box">
 				<input id="start-timer" type="button" value="Start">
@@ -26,18 +24,18 @@
 		</div>
 	</div>
 	<script>
-	/*
-		TODO: Set the countdown timer from the UI and add a start button
-		TODO: Alert the user when the countdown finishes.
-	*/
-		
+		document.body.onkeydown = function(e){
+			if (e.key == 'Enter'){
+				startTimer();
+			}
+		}
 		var number_inputs = document.querySelectorAll("input[type='number']");
 		
 		for (input of number_inputs){
 			input.defaultValue = 0;
 		}
 		
-		var counter;
+		var counter = 0;
 
 		var timeLabel = document.getElementById("time");
 		timeLabel.innerText = formatMilliseconds(counter * 1000);
@@ -46,6 +44,10 @@
 		
 		var timer;
 		startTimerBtn.onclick = function (){
+			startTimer();
+		}
+		
+		function startTimer(){
 			clearInterval(timer);
 			counter = 0;
 			timeLabel.style.color = '';
@@ -64,6 +66,7 @@
 				alert("Seconds is invalid");
 				return;
 			}
+			
 			var totalSeconds = parseInt((hrs * 60) * 60) + parseInt(mins * 60) + seconds;
 			counter = totalSeconds;
 		
