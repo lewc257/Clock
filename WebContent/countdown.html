@@ -12,7 +12,6 @@
 	<div class="container">
 		<div id="timer-box">
 			<label id="time"></label>
-			<!-- 
 			<div id="input-box">
 				<label>Hours:</label>
 				<input id="input-hrs" type="number" min="0" max="23">
@@ -21,7 +20,9 @@
 				<label>Seconds:</label>
 				<input id="input-secs" type="number" min="0" max="59">
 			</div>
-			 -->
+			<div id="button-box">
+				<input id="start-timer" type="button" value="Start">
+			</div>
 		</div>
 	</div>
 	<script>
@@ -30,23 +31,56 @@
 		TODO: Alert the user when the countdown finishes.
 	*/
 		
+		var number_inputs = document.querySelectorAll("input[type='number']");
 		
+		for (input of number_inputs){
+			input.defaultValue = 0;
+		}
 		
-		const TIME_LIMIT_SECONDS = parseInt((new Date("1/1/2020") - new Date()) / 1000);
-
-		var counter = TIME_LIMIT_SECONDS - 1;
+		var counter;
 
 		var timeLabel = document.getElementById("time");
-		
 		timeLabel.innerText = formatMilliseconds(counter * 1000);
 		
-		timer = setInterval(elapsed ,1000);
+		var startTimerBtn = document.getElementById("start-timer");
 		
-		function future(){
-			timeLabel.style.color = 'red';
-			timeLabel.style.fontSize = '55px';
-			timeLabel.innerText = 'HAPPY NEW YEAR!!';
-			alert("HAPPY NEW YEAR!!!!");
+		var timer;
+		startTimerBtn.onclick = function (){
+			clearInterval(timer);
+			counter = 0;
+			timeLabel.style.color = '';
+			
+			var hrs = parseInt(number_inputs[0].value);
+			var mins = parseInt(number_inputs[1].value);
+			var seconds = parseInt(number_inputs[2].value);
+
+			if (isNaN(hrs) || hrs < 0 || hrs > 23){
+				alert("Hours is invalid");
+				return;
+			} else if (isNaN(mins) || mins < 0 || mins > 59){
+				alert("Minutes is invalid");
+				return;
+			} else if (isNaN(seconds) || seconds < 0 || seconds > 59){
+				alert("Seconds is invalid");
+				return;
+			}
+			var totalSeconds = parseInt((hrs * 60) * 60) + parseInt(mins * 60) + seconds;
+			counter = totalSeconds;
+		
+			if (counter <= 0){
+				alert("Cant start from 0");
+				return;
+			}
+			
+			counter--;
+			
+			timeLabel.innerText = formatMilliseconds(counter * 1000);
+			
+			if (counter < 10){
+				timeLabel.style.color = 'red';
+			}
+			
+			timer = setInterval(elapsed ,1000);
 		}
 		
 		function elapsed(){
@@ -60,6 +94,11 @@
 				}
 				timeLabel.innerText = formatMilliseconds(counter * 1000);
 			}
+		}
+		
+		
+		function future(){
+			alert("TIME UP!!!");
 		}
 		
 		function formatMilliseconds(milli) {
