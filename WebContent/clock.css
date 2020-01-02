@@ -10,8 +10,27 @@ header{
 	color:white;
 }
 
-#navbar{
-	background-color:red;
+#nav-bar{
+	padding:20px;
+}
+
+#nav-bar a{
+	text-decoration: none;
+	background-color: grey;
+	padding: 6px;
+	margin:5px;
+	color:black;
+	transition:0.3s;
+	font-size:20px;
+}
+
+#nav-bar a:hover{
+	background-color:white;
+	color:black;
+}
+
+#navbar a:active{
+	background-color: red;
 }
 
 .container{
