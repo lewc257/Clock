@@ -2,8 +2,9 @@
 
 <html>
 <head>
-<title>Countdown Timer</title>
-<link rel="stylesheet" type="text/css" href="clock.css"></link>
+	<title>Clock</title>
+	<link rel="stylesheet" type="text/css" href="clock.css"></link>
+	<script src="utils.js"></script>
 </head>
 <body>
 	<header>
@@ -13,25 +14,30 @@
 			<a href="stopwatch.html">Stopwatch</a>
 		</div>
 	</header>
+	
+	<script src="navbar.js"></script>
+	
 	<div class="container">
 		<div id="timer-box">
 			<label id="time"></label>
 			<div id="input-box">
-				<label>Hours:</label> <input id="input-hrs" type="number" min="0"
-					max="23"> <label>Minutes:</label> <input id="input-mins"
-					type="number" min="0" max="59"> <label>Seconds:</label> <input
-					id="input-secs" type="number" min="0" max="59">
+				<label>Hours:</label> 
+				<input id="input-hrs" type="number" min="0" max="23">
+				<label>Minutes:</label> 
+				<input id="input-mins" type="number" min="0" max="59"> 
+				<label>Seconds:</label>
+				<input id="input-secs" type="number" min="0" max="59">
 			</div>
 			<div id="button-box">
 				<input id="start-timer" type="button" value="Start">
 			</div>
 		</div>
 	</div>
-	<script src="navbar.js"></script>
+	
 	<script>
 		/*
-		TODO: Select the navigation button if the user is in that page	
 		TODO: Alert the user with a sound effect when the timer has ended.
+		TODO: If the user navigates back to the page they left. they timer should continue from where they left off
 		*/
 		document.body.onkeydown = function(e){
 			if (e.key == 'Enter'){
@@ -112,20 +118,7 @@
 		function future(){
 			alert("TIME UP!!!");
 		}
-		
-		function formatMilliseconds(milli) {
-			var seconds = parseInt(milli / 1000);
-			var minutes = parseInt(seconds / 60);
-			var hours = parseInt(minutes / 60);
-			var hrs = formatNum(hours % 24);
-			var mins = formatNum(minutes % 60);
-			var secs = formatNum(seconds % 60);
-			return `${hrs}:${mins}:${secs}`;
-		}
 
-		function formatNum(n) {
-			return n < 10 ? "0" + n : n;
-		}
 	</script>
 </body>
 </html>

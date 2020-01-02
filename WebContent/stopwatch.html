@@ -2,8 +2,9 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>Clock</title>
 	<link rel="stylesheet" type="text/css" href="clock.css"></link>
+	<script src="utils.js"></script>
 </head>
 
 <body>
@@ -15,6 +16,15 @@
 		</div>
 	</header>
 	<script src="navbar.js"></script>
-	<div class="container"></div>
+	<div class="container">
+		<div id="timer-box">
+			<label id="time"></label>
+			<div id="button-box" style="width:30%">
+				<input id="start-timer" style="width:40%" type="button" value="Start">
+				<input id="stop-timer" style="width:40%; float:right" type="button" value="Stop">
+			</div>
+		</div>
+	</div>
+	<script src="navbar.js"></script>
 </body>
 </html>

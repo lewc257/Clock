@@ -2,8 +2,9 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>Clock</title>
 	<link rel="stylesheet" type="text/css" href="clock.css"></link>
+	<script src="utils.js"></script>
 </head>
 
 <body>
@@ -15,6 +16,21 @@
 		</div>
 	</header>
 	<script src="navbar.js"></script>
-	<div class="container"></div>
+	<div class="container">
+		<div id="timer-box">
+			<label id="time"></label>
+		</div>
+	</div>
+	<script>
+		/*
+		TODO: Include the day and month (in letters) and year above the time
+		*/
+		
+		var localTimer = setInterval(function(){
+			var time = document.getElementById("time");
+			time.innerText = getTime(new Date());
+		}, 200);
+		
+	</script>
 </body>
 </html>
