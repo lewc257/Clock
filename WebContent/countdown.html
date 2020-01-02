@@ -8,9 +8,9 @@
 <body>
 	<header>
 		<div id="nav-bar">
-			<a href="#">Local Time</a>
-			<a href="clock.html">Countdown</a>
-			<a href="#">Stopwatch</a>
+			<a href="local_clock.html">Local Time</a>
+			<a href="countdown.html">Countdown</a>
+			<a href="stopwatch.html">Stopwatch</a>
 		</div>
 	</header>
 	<div class="container">
@@ -27,9 +27,11 @@
 			</div>
 		</div>
 	</div>
+	<script src="navbar.js"></script>
 	<script>
 		/*
-			TODO: Alert the user with a sound effect when the timer has ended.
+		TODO: Select the navigation button if the user is in that page	
+		TODO: Alert the user with a sound effect when the timer has ended.
 		*/
 		document.body.onkeydown = function(e){
 			if (e.key == 'Enter'){
