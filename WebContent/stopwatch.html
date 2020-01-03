@@ -18,13 +18,56 @@
 	<script src="navbar.js"></script>
 	<div class="container">
 		<div id="timer-box">
-			<label id="time"></label>
+			<label id="time">M:S:Mil</label>
 			<div id="button-box" style="width:30%">
-				<input id="start-timer" style="width:40%" type="button" value="Start">
+				<input id="start-timer" style="width:40%; float:left" type="button" value="Start">
 				<input id="stop-timer" style="width:40%; float:right" type="button" value="Stop">
 			</div>
 		</div>
 	</div>
-	<script src="navbar.js"></script>
+	<script>
+		//TODO: Add reset button. this should clear the interval,  and reset the timer label and counter variables
+		//TODO: Allow the user to capture a lap
+		//Improvement: User one button for starting and stopping
+		var stopwatch;
+		var milliseconds = 0, seconds = 0, minutes = 0;
+		var isRunning = false;
+		
+		var timeLabel = document.getElementById("time");
+		timeLabel.innerText = formatMilliseconds(0);
+		
+		var startTimerBtn = document.getElementById("start-timer");
+		startTimerBtn.onclick = function(){
+			if (!isRunning){
+				stopwatch = setInterval(elapsed, 100);
+				isRunning = true;
+			}
+		}
+		
+		var stopTimerBtn = document.getElementById("stop-timer");
+		stopTimerBtn.onclick = function(){
+			clearInterval(stopwatch);
+			stopwatch = null;
+			isRunning = false;
+		}
+		
+		function elapsed(){
+			if (milliseconds >= 9){
+				milliseconds = 0;
+				seconds ++;
+			}
+			if (seconds > 59){
+				seconds = 0;
+				minutes++;
+			} else {
+				milliseconds++;
+			}
+
+			var mins_f = formatNumber(minutes);
+			var secs_f = formatNumber(seconds);
+			var milli_f = formatNumber(milliseconds);
+			document.getElementById("time").innerText = `${mins_f}:${secs_f}:${milli_f}`;
+		}
+	</script>
 </body>
 </html>

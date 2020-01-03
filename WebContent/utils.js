@@ -8,6 +8,7 @@ function formatMilliseconds(milli) {
 	return `${hrs}:${mins}:${secs}`;
 }
 
+
 function formatDate(date) {
 	var day = formatNumber(date.getDate());
 	var month = formatNumber(date.getMonth() + 1);
@@ -25,6 +26,17 @@ function getTime(date){
 	return `${hour}:${minute}:${second}`;
 }
 
+
 function formatNumber(number){
-	return number < 10 ? "0" + number : number;
+	return number < 10 ? "0" + number : number;	
+}
+
+
+function stopWatchFormat(milli){
+	var seconds = parseInt(milli / 1000);
+	var minutes = parseInt(seconds / 60);
+	var mins_f = formatNumber(minutes % 60);
+	var secs_f = formatNumber(seconds % 60);
+	var milli_f = milli % 1000;
+	return `${mins_f}:${secs_f}:${milli_f}`;
 }
