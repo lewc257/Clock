@@ -37,14 +37,12 @@
 			<ul id="laps"></ul>
 			<div id="button-box" style="width:70%;">
 				<input onclick="startTimer()" id="start-timer" style="width:20%; float:left" type="button" value="Start">
-				<input onclick="stopTimer()" id="stop-timer" style="width:20%; margin-left: 6.5%" type="button" value="Stop">
-				<input onclick="clearTimer()" id="clear-timer" style="width:20%; margin-left: 5.5%" type="button" value="Clear">
-				<input onclick="lap()" id="lap" style="width:20%; float:right" type="button" value="Lap">
+				<input onclick="stopTimer()" id="stop-timer" style="width:20%; margin-left: 20%" type="button" value="Stop">
+				<input onclick="cancelTimer()" id="clear-timer" style="width:20%; float:right" type="button" value="Cancel">
 			</div>
 		</div>
 	</div>
 	<script>
-		//TODO: If the user clicks the same navigation button, dont refresh the page.
 		//Improvement: User one button for starting and stopping
 		var stopwatch;
 		var milliseconds = 0, seconds = 0, minutes = 0;
@@ -55,7 +53,7 @@
 		function elapsed(){
 			if (milliseconds >= 9){
 				milliseconds = 0;
-				seconds ++;
+				seconds++;
 			}
 			if (seconds > 59){
 				seconds = 0;
@@ -80,21 +78,10 @@
 			isRunning = false;
 		}
 		
-		function clearTimer(){
+		function cancelTimer(){
 			stopTimer();
 			milliseconds = seconds = minutes = 0;
 			timeLabel.innerText = '00:00:00';
-		}
-		
-		function lap(){
-			if (stopwatch == null) //For now
-				return;
-			
-			var lapList = document.querySelector("ul");
-			var textNode = document.createTextNode("Lap: " + formattedTime());
-			var lap = document.createElement("li");
-			lap.appendChild(textNode);
-			lapList.appendChild(lap);
 		}
 		
 		function formattedTime(){

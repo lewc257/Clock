@@ -6,12 +6,6 @@ var navBarButtons = document.getElementById("nav-bar");
 
 var page = currentLocation[len - 1];
 
-/*
-var stopWatchLink = navBarButtons.children[2];
-var coundDownLink = navBarButtons.children[1];
-var localClockLink = novBarButtons.children[0];
-*/
-
 switch (page){
 	case "countdown.html":
 		navBarButtons.children[1].style.backgroundColor = 'yellow';
