@@ -12,7 +12,12 @@
 		 
 		 ul {
 		 	text-align:center;
-		 	background-color: green;
+		 	list-style-type:none;
+		 	font-size:20px;
+		 }
+		 
+		 ul li{
+		 	margin:5px;
 		 }
 	</style>
 </head>
@@ -76,7 +81,7 @@
 		}
 		
 		function clearTimer(){
-			stop();
+			stopTimer();
 			milliseconds = seconds = minutes = 0;
 			timeLabel.innerText = '00:00:00';
 		}
@@ -86,7 +91,7 @@
 				return;
 			
 			var lapList = document.querySelector("ul");
-			var textNode = document.createTextNode(formattedTime());
+			var textNode = document.createTextNode("Lap: " + formattedTime());
 			var lap = document.createElement("li");
 			lap.appendChild(textNode);
 			lapList.appendChild(lap);
