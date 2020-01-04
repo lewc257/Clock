@@ -19,6 +19,21 @@
 		 ul li{
 		 	margin:5px;
 		 }
+		 
+		 #start-timer{
+		 	width:20%; 
+		 	float:left;
+		 }
+		 
+		 #stop-timer{
+		 	width:20%;
+		 	margin-left: 20%;
+		 }
+		 
+		 #clear-timer{
+		 	width:20%; 
+		 	float:right;
+		 }
 	</style>
 </head>
 
@@ -38,9 +53,9 @@
 			<label id="time">00:00.0</label>
 			<ul id="laps"></ul>
 			<div class="button-box" style="width:70%;">
-				<input onclick="startTimer()" id="start-timer" style="width:20%; float:left" type="button" value="Start">
-				<input onclick="stopTimer()" id="stop-timer" style="width:20%; margin-left: 20%" type="button" value="Stop">
-				<input onclick="cancelTimer()" id="clear-timer" style="width:20%; float:right" type="button" value="Cancel">
+				<input onclick="startTimer()" id="start-timer" type="button" value="Start">
+				<input onclick="stopTimer()" id="stop-timer" type="button" value="Stop">
+				<input onclick="cancelTimer()" id="clear-timer" type="button" value="Cancel">
 			</div>
 		</div>
 	</div>

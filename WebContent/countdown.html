@@ -5,6 +5,15 @@
 	<title>Clock</title>
 	<link rel="stylesheet" type="text/css" href="clock.css"></link>
 	<script src="utils.js"></script>
+	<style>
+		#start-timer{
+			margin-left:230px;
+		}
+		
+		#cancel-timer{
+			margin-left:100px;
+		}
+	</style>
 </head>
 <body>
 	<header>
@@ -29,8 +38,8 @@
 				<input id="input-secs" type="number" min="0" max="59">
 			</div>
 			<div class="button-box">
-				<input onclick="startTimer()" style="width:20%" id="start-timer" type="button" value="Start">
-				<input onclick="startTimer()" style="width:20%" id="start-timer" type="button" value="Cancel">
+				<input onclick="startTimer()" id="start-timer" type="button" value="Start">
+				<input onclick="cancelTimer()" id="cancel-timer" type="button" value="Cancel">
 			</div>
 		</div>
 	</div>
@@ -42,7 +51,6 @@
 		TODO: If the user navigates back to the page they left. they timer should continue from where they left off
 		TODO: Make the timer run slightly faster (stopwatch elapsed() is an alternative).
 		*/
-		
 		document.body.onkeydown = function(e){
 			if (e.key == 'Enter'){
 				startTimer();
@@ -63,7 +71,9 @@
 		var timer;
 		
 		function startTimer(){
-			clearTimer();
+			if (isRunning){
+				return;
+			}
 			var hrs = parseInt(number_inputs[0].value);
 			var mins = parseInt(number_inputs[1].value);
 			var seconds = parseInt(number_inputs[2].value);
@@ -111,10 +121,11 @@
 			}
 		}
 		
-		function clearTimer(){
+		function cancelTimer(){
 			clearInterval(timer);
 			counter = 0;
 			timeLabel.style.color = '';
+			timeLabel.innerText = '00:00:00';
 			isRunning = false;
 		}
 		
