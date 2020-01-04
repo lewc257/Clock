@@ -2,7 +2,7 @@ var currentLocation = window.location.href.split("/");
 
 var len = currentLocation.length;
 
-var navBarButtons = document.getElementById("nav-bar");
+var navBarButtons = document.getElementsByClassName("nav-bar")[0];
 
 var page = currentLocation[len - 1];
 

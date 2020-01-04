@@ -10,11 +10,11 @@ header{
 	color:white;
 }
 
-#nav-bar{
+.nav-bar{
 	padding:20px;
 }
 
-#nav-bar a{
+.nav-bar a{
 	text-decoration: none;
 	background-color: grey;
 	padding: 6px;
@@ -24,12 +24,12 @@ header{
 	font-size:20px;
 }
 
-#nav-bar a:hover{
+.nav-bar a:hover{
 	background-color:white;
 	color:black;
 }
 
-#navbar a:active{
+.navbar a:active{
 	background-color: red;
 }
 
@@ -45,52 +45,51 @@ header{
 	background-color: grey;
 }
 
-#timer-box {
+.timer-box {
 	margin-left:auto;
 	margin-right:auto;
 	width:100%;
 	padding:5px;
 }
 
-#timer-box #time{
+.timer-box #time{
 	margin-left:12%;
 	font-size:150px;
 	border:none;
 	padding:10px;
 }
 
-#input-box{
+.input-box{
 	background-color: none;
 	width:20%;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top: 40px;
-}
-
-#input-box, #input-box input[type="number"]{
 	font-size:17px;	
 }
 
-#input-box label{
+.input-box label{
 	display:block;
 	margin-top:5px;
 }
 
-#input-box input[type="number"]{
+.input-box input[type="number"]{
 	text-align:center;
 	width:100%;
 	box-sizing:border-box;
+	font-size:17px;	
 }
 
-#button-box{
+.button-box{
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:5%;
-	width:15%;
+	width:100%;
+	background-color:white;
 }
 
-#button-box input[type="button"]{
-	width:100%;
+.button-box input[type="button"]{
+	width:16%;
 	font-size:30px;
 	border: 1px black solid;
 	transition: 0.3s;
@@ -98,12 +97,12 @@ header{
 	color:white;
 }
 
-#button-box input[type="button"]:hover{
+.button-box input[type="button"]:hover{
 	background-color:white;
 	color:black;
 }
 
-#button-box input[type="button"]:active{
+.button-box input[type="button"]:active{
 	background-color:red;
 	color:whitei;
 }
